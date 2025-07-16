@@ -13,7 +13,7 @@ spec:
         app: ollama-backend
     spec:
       containers:
-      - name: server
+      - name: ollama-backend
         image: registry.digitalocean.com/ollama-go-gpt/my-app:latest
         resources:
           limits:
