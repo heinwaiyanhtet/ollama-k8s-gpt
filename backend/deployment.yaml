@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama-backend
+  template:
+    metadata:
+      labels:
+        app: ollama-backend
+    spec:
+      containers:
+      - name: server
+        image: registry.digitalocean.com/ollama-go-gpt/my-app:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MODEL_ENDPOINT
+          value: "http://157.230.235.32:8000"
+
